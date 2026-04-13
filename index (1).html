@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Xcellence Auto Detailing | Mobile Detailing – Chicagoland</title>
+  <meta name="description" content="Premium mobile auto detailing serving the Chicagoland area. We come to you. Interior, exterior, full detail packages for cars, SUVs & trucks." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --red: #c0392b;
+      --red-dark: #96281b;
+      --navy: #0d1f2d;
+      --navy-mid: #162d3f;
+      --navy-light: #1e3a52;
+      --gold: #e8b84b;
+      --white: #ffffff;
+      --off-white: #f4f1ec;
+      --gray-light: #e8e4dc;
+      --gray-mid: #9aacb8;
+      --text-dark: #0d1f2d;
+      --font-display: 'Bebas Neue', sans-serif;
+      --font-body: 'DM Sans', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--off-white);
+      color: var(--text-dark);
+      overflow-x: hidden;
+    }
+
+    /* ── SCROLLBAR ── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--navy); }
+    ::-webkit-scrollbar-thumb { background: var(--red); border-radius: 3px; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(13, 31, 45, 0.97);
+      backdrop-filter: blur(12px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 48px;
+      height: 68px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .nav-brand {
+      font-family: var(--font-display);
+      font-size: 26px;
+      letter-spacing: 2px;
+      color: var(--white);
+      text-decoration: none;
+    }
+    .nav-brand span { color: var(--red); }
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      list-style: none;
+    }
+    .nav-links a {
+      color: var(--gray-mid);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--white); }
+    .nav-cta {
+      background: var(--red);
+      color: var(--white) !important;
+      padding: 9px 22px;
+      border-radius: 4px;
+      transition: background 0.2s !important;
+    }
+    .nav-cta:hover { background: var(--red-dark) !important; color: var(--white) !important; }
+
+    /* hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .hamburger span {
+      display: block; width: 24px; height: 2px;
+      background: var(--white); border-radius: 2px;
+      transition: all 0.3s;
+    }
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 68px; left: 0; right: 0;
+      background: var(--navy);
+      padding: 24px 32px;
+      z-index: 99;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .mobile-menu.open { display: block; }
+    .mobile-menu a {
+      display: block;
+      color: var(--gray-mid);
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 500;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      letter-spacing: 0.5px;
+    }
+    .mobile-menu a:last-child { border-bottom: none; }
+    .mobile-menu a:hover { color: var(--white); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      background: var(--navy);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      padding: 120px 48px 80px;
+    }
+    .hero-bg-lines {
+      position: absolute;
+      inset: 0;
+      background-image:
+        repeating-linear-gradient(
+          -45deg,
+          transparent,
+          transparent 60px,
+          rgba(255,255,255,0.015) 60px,
+          rgba(255,255,255,0.015) 61px
+        );
+      pointer-events: none;
+    }
+    .hero-glow {
+      position: absolute;
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(192,57,43,0.18) 0%, transparent 70%);
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      gap: 80px;
+      max-width: 1100px;
+      width: 100%;
+    }
+    .hero-text { flex: 1; }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(192,57,43,0.15);
+      border: 1px solid rgba(192,57,43,0.4);
+      color: #e8786e;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 7px 16px;
+      border-radius: 40px;
+      margin-bottom: 28px;
+    }
+    .hero-badge::before {
+      content: '';
+      width: 6px; height: 6px;
+      background: var(--red);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(1.4); }
+    }
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(56px, 8vw, 96px);
+      line-height: 0.95;
+      color: var(--white);
+      letter-spacing: 2px;
+      margin-bottom: 24px;
+    }
+    .hero h1 .red { color: var(--red); }
+    .hero h1 .outline {
+      -webkit-text-stroke: 2px rgba(255,255,255,0.3);
+      color: transparent;
+    }
+    .hero-sub {
+      font-size: 17px;
+      color: var(--gray-mid);
+      line-height: 1.7;
+      max-width: 420px;
+      margin-bottom: 36px;
+      font-weight: 300;
+    }
+    .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+    .btn-red {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--red);
+      color: var(--white);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      padding: 14px 28px;
+      border-radius: 4px;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .btn-red:hover { background: var(--red-dark); transform: translateY(-1px); }
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: transparent;
+      color: var(--white);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      padding: 14px 28px;
+      border-radius: 4px;
+      border: 1px solid rgba(255,255,255,0.25);
+      transition: border-color 0.2s, transform 0.15s;
+    }
+    .btn-outline:hover { border-color: rgba(255,255,255,0.6); transform: translateY(-1px); }
+    .hero-logo-wrap {
+      flex-shrink: 0;
+      width: 280px; height: 280px;
+      border-radius: 50%;
+      border: 2px solid rgba(192,57,43,0.3);
+      overflow: hidden;
+      background: var(--navy-mid);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 60px rgba(192,57,43,0.2);
+    }
+    .hero-logo-wrap img { width: 100%; height: 100%; object-fit: cover; }
+    .hero-stars {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      margin-top: 28px;
+    }
+    .hero-stars .star { color: var(--red); font-size: 16px; }
+    .hero-stars span { font-size: 13px; color: var(--gray-mid); margin-left: 8px; font-weight: 300; }
+
+    /* ── STRIP ── */
+    .strip {
+      background: var(--red);
+      padding: 14px 0;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+    .strip-inner {
+      display: inline-flex;
+      gap: 64px;
+      animation: marquee 22s linear infinite;
+    }
+    .strip-inner span {
+      font-family: var(--font-display);
+      font-size: 15px;
+      letter-spacing: 3px;
+      color: rgba(255,255,255,0.9);
+    }
+    .strip-inner span::before { content: '★  '; }
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    /* ── SECTION BASE ── */
+    .section {
+      padding: 100px 48px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .section-label {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(36px, 5vw, 56px);
+      letter-spacing: 1px;
+      line-height: 1;
+      color: var(--navy);
+      margin-bottom: 16px;
+    }
+    .section-title span { color: var(--red); }
+    .section-sub {
+      font-size: 16px;
+      color: #6b7e8c;
+      font-weight: 300;
+      line-height: 1.7;
+      max-width: 520px;
+      margin-bottom: 56px;
+    }
+
+    /* ── PRICING ── */
+    #pricing { background: var(--navy); padding: 100px 0; }
+    #pricing .section { max-width: 1200px; }
+    #pricing .section-title { color: var(--white); }
+    #pricing .section-sub { color: var(--gray-mid); }
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 2px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .price-card {
+      background: var(--navy-mid);
+      padding: 36px 28px;
+      text-align: center;
+      transition: background 0.2s;
+      position: relative;
+    }
+    .price-card:hover { background: var(--navy-light); }
+    .price-card.featured { background: var(--red); }
+    .price-card.featured:hover { background: #a93226; }
+    .price-card.featured .price-label,
+    .price-card.featured .price-from,
+    .price-card.featured .price-num { color: rgba(255,255,255,0.9); }
+    .price-card.featured .price-num { color: var(--white); font-size: 40px; }
+    .featured-tag {
+      display: inline-block;
+      background: rgba(255,255,255,0.2);
+      color: var(--white);
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-bottom: 16px;
+    }
+    .price-icon {
+      width: 48px; height: 48px;
+      margin: 0 auto 16px;
+      background: rgba(255,255,255,0.07);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .price-icon svg { width: 22px; height: 22px; }
+    .price-label {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--white);
+      margin-bottom: 12px;
+      line-height: 1.4;
+    }
+    .price-from {
+      font-size: 11px;
+      color: var(--gray-mid);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 4px;
+    }
+    .price-num {
+      font-family: var(--font-display);
+      font-size: 36px;
+      letter-spacing: 1px;
+      color: var(--red);
+    }
+    .price-card.featured .price-num { color: var(--white); }
+    .pricing-note {
+      text-align: center;
+      margin-top: 24px;
+      font-size: 13px;
+      color: var(--gray-mid);
+      font-weight: 300;
+    }
+
+    /* ── SERVICES ── */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+    }
+    .service-card {
+      background: var(--white);
+      border-radius: 8px;
+      padding: 32px 28px;
+      border: 1px solid var(--gray-light);
+      border-left: 4px solid var(--red);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .service-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(13,31,45,0.1);
+    }
+    .service-num {
+      font-family: var(--font-display);
+      font-size: 48px;
+      color: var(--gray-light);
+      line-height: 1;
+      margin-bottom: 16px;
+    }
+    .service-card h3 {
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--navy);
+      margin-bottom: 10px;
+    }
+    .service-card p {
+      font-size: 14px;
+      color: #6b7e8c;
+      line-height: 1.7;
+      font-weight: 300;
+    }
+
+    /* ── COMING SOON ── */
+    #coming { background: var(--navy); padding: 100px 0; }
+    #coming .section-title { color: var(--white); }
+    #coming .section-sub { color: var(--gray-mid); }
+    .coming-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+    }
+    .coming-card {
+      border: 1px dashed rgba(255,255,255,0.12);
+      border-radius: 8px;
+      padding: 28px 24px;
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.2s;
+    }
+    .coming-card:hover { border-color: rgba(192,57,43,0.5); }
+    .coming-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--red), transparent);
+    }
+    .coming-pill {
+      display: inline-block;
+      background: rgba(192,57,43,0.15);
+      color: #e8786e;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-bottom: 14px;
+    }
+    .coming-card h3 {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--white);
+      margin-bottom: 8px;
+    }
+    .coming-card p {
+      font-size: 13px;
+      color: var(--gray-mid);
+      line-height: 1.6;
+      font-weight: 300;
+    }
+
+    /* ── WHY US ── */
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 0;
+      border: 1px solid var(--gray-light);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .why-item {
+      padding: 40px 32px;
+      border-right: 1px solid var(--gray-light);
+      border-bottom: 1px solid var(--gray-light);
+      background: var(--white);
+      transition: background 0.2s;
+    }
+    .why-item:hover { background: var(--off-white); }
+    .why-item:last-child { border-right: none; }
+    .why-num {
+      font-family: var(--font-display);
+      font-size: 44px;
+      color: var(--red);
+      line-height: 1;
+      margin-bottom: 10px;
+      letter-spacing: 1px;
+    }
+    .why-item h4 {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--navy);
+      margin-bottom: 6px;
+    }
+    .why-item p { font-size: 13px; color: #6b7e8c; line-height: 1.6; font-weight: 300; }
+
+    /* ── CONTACT ── */
+    #contact { background: var(--navy); padding: 100px 0; }
+    #contact .section-title { color: var(--white); }
+    #contact .section-sub { color: var(--gray-mid); }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+    }
+    .contact-card {
+      background: var(--navy-mid);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 8px;
+      padding: 28px 24px;
+      border-top: 3px solid var(--red);
+      transition: background 0.2s, transform 0.2s;
+    }
+    .contact-card:hover { background: var(--navy-light); transform: translateY(-2px); }
+    .contact-card label {
+      display: block;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 10px;
+    }
+    .contact-card a,
+    .contact-card span {
+      display: block;
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--white);
+      text-decoration: none;
+      word-break: break-word;
+      transition: color 0.2s;
+    }
+    .contact-card a:hover { color: #e8786e; }
+    .contact-card .sub {
+      font-size: 12px;
+      color: var(--gray-mid);
+      margin-top: 4px;
+      font-weight: 300;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #071219;
+      padding: 40px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+    .footer-brand {
+      font-family: var(--font-display);
+      font-size: 20px;
+      letter-spacing: 2px;
+      color: var(--white);
+    }
+    .footer-brand span { color: var(--red); }
+    footer p {
+      font-size: 13px;
+      color: var(--gray-mid);
+      font-weight: 300;
+    }
+    .footer-ig {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--gray-mid);
+      text-decoration: none;
+      font-size: 13px;
+      transition: color 0.2s;
+    }
+    .footer-ig:hover { color: var(--white); }
+    .footer-ig svg { width: 16px; height: 16px; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      nav { padding: 0 24px; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .hero { padding: 100px 24px 60px; }
+      .hero-inner { flex-direction: column; gap: 40px; text-align: center; }
+      .hero-sub { margin: 0 auto 36px; }
+      .hero-actions { justify-content: center; }
+      .hero-stars { justify-content: center; }
+      .hero-logo-wrap { width: 200px; height: 200px; order: -1; }
+      .section { padding: 72px 24px; }
+      #pricing .section,
+      #coming .section,
+      #contact .section { padding: 72px 24px; }
+      footer { padding: 32px 24px; flex-direction: column; text-align: center; align-items: center; }
+      .why-item { border-right: none; }
+    }
+    @media (max-width: 520px) {
+      .pricing-grid { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-brand"><span>X</span>CELLENCE</a>
+    <ul class="nav-links">
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#coming">Coming Soon</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="tel:7738355261" class="nav-cta">Call Now</a></li>
+    </ul>
+    <div class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#pricing" onclick="closeMenu()">Pricing</a>
+    <a href="#services" onclick="closeMenu()">Services</a>
+    <a href="#coming" onclick="closeMenu()">Coming Soon</a>
+    <a href="#contact" onclick="closeMenu()">Contact</a>
+    <a href="tel:7738355261" style="color:#e8786e;">📞 (773) 835-5261</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-bg-lines"></div>
+    <div class="hero-glow"></div>
+    <div class="hero-inner">
+      <div class="hero-text">
+        <div class="hero-badge">Mobile Detailing · Chicagoland Area</div>
+        <h1>
+          <span class="red">XCEL</span>LENCE<br>
+          <span class="outline">AUTO</span><br>
+          DETAILING
+        </h1>
+        <p class="hero-sub">Premium car care delivered to your driveway. We bring the detail shop to you — homes, offices, wherever you need us.</p>
+        <div class="hero-actions">
+          <a href="tel:7738355261" class="btn-red">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 11.8a19.79 19.79 0 01-3.07-8.67A2 2 0 012 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.83a16 16 0 006.29 6.29l1.19-1.34a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            (773) 835-5261
+          </a>
+          <a href="#pricing" class="btn-outline">View Pricing ↓</a>
+        </div>
+        <div class="hero-stars">
+          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+          <span>5-star rated service</span>
+        </div>
+      </div>
+      <div class="hero-logo-wrap">
+        <img src="FullLogo.jpg" alt="Xcellence Auto Detailing Logo" />
+      </div>
+    </div>
+  </section>
+
+  <!-- STRIP -->
+  <div class="strip" aria-hidden="true">
+    <div class="strip-inner">
+      <span>MOBILE SERVICE</span>
+      <span>CHICAGOLAND AREA</span>
+      <span>INTERIOR DETAIL</span>
+      <span>EXTERIOR DETAIL</span>
+      <span>FULL PACKAGES</span>
+      <span>SUV & TRUCKS</span>
+      <span>CERAMIC COATING COMING SOON</span>
+      <span>MOBILE SERVICE</span>
+      <span>CHICAGOLAND AREA</span>
+      <span>INTERIOR DETAIL</span>
+      <span>EXTERIOR DETAIL</span>
+      <span>FULL PACKAGES</span>
+      <span>SUV & TRUCKS</span>
+      <span>CERAMIC COATING COMING SOON</span>
+    </div>
+  </div>
+
+  <!-- PRICING -->
+  <div id="pricing">
+    <div class="section">
+      <div class="section-label">Transparent Pricing</div>
+      <h2 class="section-title">Simple <span>Rates</span></h2>
+      <p class="section-sub">No surprises — straightforward starting prices based on vehicle type and service. Call for an exact quote.</p>
+      <div class="pricing-grid">
+
+        <div class="price-card">
+          <div class="price-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#c0392b" stroke-width="1.8"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>
+          </div>
+          <div class="price-label">Interior Detail</div>
+          <div class="price-from">Starting at</div>
+          <div class="price-num">$120</div>
+        </div>
+
+        <div class="price-card">
+          <div class="price-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#c0392b" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 3c0 0-4 3-4 9s4 9 4 9"/><path d="M3 12h18"/></svg>
+          </div>
+          <div class="price-label">Exterior Detail</div>
+          <div class="price-from">Starting at</div>
+          <div class="price-num">$40</div>
+        </div>
+
+        <div class="price-card featured">
+          <div class="featured-tag">Most Popular</div>
+          <div class="price-icon" style="background:rgba(255,255,255,0.15);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+          </div>
+          <div class="price-label">Full Detail</div>
+          <div class="price-from">Starting at</div>
+          <div class="price-num">$150</div>
+        </div>
+
+        <div class="price-card">
+          <div class="price-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#c0392b" stroke-width="1.8"><rect x="1" y="9" width="22" height="9" rx="2"/><path d="M5 9V7a2 2 0 012-2h10a2 2 0 012 2v2"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg>
+          </div>
+          <div class="price-label">SUV & Truck Detail</div>
+          <div class="price-from">Starting at</div>
+          <div class="price-num">$130</div>
+        </div>
+
+        <div class="price-card">
+          <div class="price-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#c0392b" stroke-width="1.8"><rect x="1" y="8" width="22" height="10" rx="2"/><path d="M5 8V5a2 2 0 012-2h10a2 2 0 012 2v3"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg>
+          </div>
+          <div class="price-label">SUV Full Detail</div>
+          <div class="price-from">Starting at</div>
+          <div class="price-num">$170</div>
+        </div>
+
+      </div>
+      <p class="pricing-note">Prices may vary based on vehicle size and condition. Call <a href="tel:7738355261" style="color:#e8786e; text-decoration:none;">(773) 835-5261</a> for an exact quote.</p>
+    </div>
+  </div>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="section">
+      <div class="section-label">What We Offer</div>
+      <h2 class="section-title">Our <span>Services</span></h2>
+      <p class="section-sub">Professional detailing brought directly to your location — no drop-off needed.</p>
+      <div class="services-grid">
+
+        <div class="service-card">
+          <div class="service-num">01</div>
+          <h3>Exterior Wash & Detail</h3>
+          <p>Hand wash, clay bar treatment, tire dressing, and window cleaning for a showroom-quality shine every time.</p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-num">02</div>
+          <h3>Interior Detail</h3>
+          <p>Full vacuum, steam cleaning, leather conditioning, and odor elimination. Your cabin will feel brand new.</p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-num">03</div>
+          <h3>Full Detail Package</h3>
+          <p>Our most comprehensive service — complete interior and exterior treatment for a total transformation.</p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-num">04</div>
+          <h3>Engine Bay Cleaning</h3>
+          <p>Safe and careful removal of grease, dust, and buildup from under the hood to keep things running clean.</p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-num">05</div>
+          <h3>Headlight Restoration</h3>
+          <p>Remove yellowing and haze to restore crystal clarity and improve your nighttime driving visibility.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- COMING SOON -->
+  <div id="coming">
+    <div class="section">
+      <div class="section-label">Expanding Soon</div>
+      <h2 class="section-title">Coming <span>Soon</span></h2>
+      <p class="section-sub">We're constantly growing our service lineup. Here's what's coming next.</p>
+      <div class="coming-grid">
+
+        <div class="coming-card">
+          <div class="coming-pill">Coming Soon</div>
+          <h3>Paint Decontamination</h3>
+          <p>Iron fallout removal, clay bar treatment, and surface prep for a perfectly clean, smooth finish.</p>
+        </div>
+
+        <div class="coming-card">
+          <div class="coming-pill">Coming Soon</div>
+          <h3>Ceramic Coating</h3>
+          <p>Long-lasting nano-ceramic protection that repels water, dirt, and UV damage — good for years.</p>
+        </div>
+
+        <div class="coming-card">
+          <div class="coming-pill">Coming Soon</div>
+          <h3>Paint Correction</h3>
+          <p>Multi-stage machine polishing to remove swirl marks, scratches, and oxidation for a flawless finish.</p>
+        </div>
+
+        <div class="coming-card">
+          <div class="coming-pill">Coming Soon</div>
+          <h3>Window Tinting</h3>
+          <p>Professional-grade film installation for privacy, UV protection, and a clean custom appearance.</p>
+        </div>
+
+        <div class="coming-card">
+          <div class="coming-pill">Coming Soon</div>
+          <h3>Vinyl Wrapping</h3>
+          <p>Color changes and custom designs using premium vinyl — protect your paint and stand out from the crowd.</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- WHY US -->
+  <section>
+    <div class="section">
+      <div class="section-label">Why Xcellence</div>
+      <h2 class="section-title">The <span>Difference</span></h2>
+      <p class="section-sub">We're not just a car wash — we're a mobile detailing experience built around your schedule.</p>
+      <div class="why-grid">
+        <div class="why-item">
+          <div class="why-num">100%</div>
+          <h4>Fully Mobile</h4>
+          <p>We come to your home, office, or anywhere that works for you. No drop-off, no waiting rooms.</p>
+        </div>
+        <div class="why-item">
+          <div class="why-num">★★★★★</div>
+          <h4>5-Star Rated</h4>
+          <p>Consistently top-rated by customers throughout the Chicagoland area. Quality is our standard.</p>
+        </div>
+        <div class="why-item">
+          <div class="why-num">Pro</div>
+          <h4>Pro-Grade Products</h4>
+          <p>We use professional detailing products for results you can see and feel on every vehicle.</p>
+        </div>
+        <div class="why-item">
+          <div class="why-num">Fast</div>
+          <h4>Flexible Scheduling</h4>
+          <p>Book around your day. We work Mon–Sat to fit your lifestyle, not the other way around.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <div id="contact">
+    <div class="section">
+      <div class="section-label">Reach Out</div>
+      <h2 class="section-title">Get in <span>Touch</span></h2>
+      <p class="section-sub">Ready to book or have a question? Give us a call, send an email, or find us on Instagram.</p>
+      <div class="contact-grid">
+
+        <div class="contact-card">
+          <label>Phone</label>
+          <a href="tel:7738355261">(773) 835-5261</a>
+          <span class="sub">Call or text anytime</span>
+        </div>
+
+        <div class="contact-card">
+          <label>Email</label>
+          <a href="mailto:xcellencedetailing23@gmail.com">xcellencedetailing23@gmail.com</a>
+          <span class="sub">We reply quickly</span>
+        </div>
+
+        <div class="contact-card">
+          <label>Service Area</label>
+          <span>Chicagoland Area</span>
+          <span class="sub">We come to you</span>
+        </div>
+
+        <div class="contact-card">
+          <label>Instagram</label>
+          <a href="https://www.instagram.com/xcellence.autodetailing/" target="_blank" rel="noopener">@xcellence.autodetailing</a>
+          <span class="sub">Follow for updates</span>
+        </div>
+
+        <div class="contact-card">
+          <label>Hours</label>
+          <span>Mon – Sat</span>
+          <span class="sub">8:00 AM – 7:00 PM</span>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-brand"><span>X</span>CELLENCE Auto Detailing</div>
+    <p>© 2025 Xcellence Auto Detailing · Chicagoland, IL</p>
+    <a href="https://www.instagram.com/xcellence.autodetailing/" target="_blank" rel="noopener" class="footer-ig">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+      Follow on Instagram
+    </a>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById('mobileMenu');
+      menu.classList.toggle('open');
+    }
+    function closeMenu() {
+      document.getElementById('mobileMenu').classList.remove('open');
+    }
+    // Close mobile menu on outside click
+    document.addEventListener('click', function(e) {
+      const menu = document.getElementById('mobileMenu');
+      const hamburger = document.querySelector('.hamburger');
+      if (!menu.contains(e.target) && !hamburger.contains(e.target)) {
+        menu.classList.remove('open');
+      }
+    });
+  </script>
+
+</body>
+</html>
